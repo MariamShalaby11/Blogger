@@ -4,8 +4,8 @@ const {getAll} = require('./controllers/blog');
 const routes=require('./routes');
 
 
-const url="mongodb+srv://MariamShalaby:191997mariam@cluster0.epk4m.mongodb.net/blog"
-mongoose.connect(url, {
+const {DBURL}=process.env
+mongoose.connect(DBURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
