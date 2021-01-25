@@ -4,8 +4,8 @@ const {getAll} = require('./controllers/blog');
 const routes=require('./routes');
 
 
-const {DBURL}=process.env
-mongoose.connect(DBURL, {
+const {MONGODB_DBURL}=process.env
+mongoose.connect(MONGODB_DBURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
