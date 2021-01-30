@@ -18,7 +18,7 @@ const getByTitle=(title) =>Blog.find({title}).exec();
 //search by tag
 const getByTag=(tags) =>Blog.find({tags}).exec();
 //write comment
-const comment = (id,body) =>Blog.updateOne({_id:id},{$push:{comments:body}},{new:true}).exec();
+const comment = (id,body) =>Blog.findByIdAndUpdate({_id:id},{$push:{comments:body}},{new:true}).exec();
 // findByIdAndUpdate( id, { $push: { comments:body} },{ new: true, useFindAndModify: false })
 //  Blog.updateOne({_id:id},{$set:body},{new:true}).exec()
 
