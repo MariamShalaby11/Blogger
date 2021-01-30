@@ -93,7 +93,7 @@ router.get('/tags/:tag', async (req, res, next) => {
     }
 });
 //write comment
-router.post('/comment/:id',async(req , res , next) =>{
+router.patch('/comment/:id',async(req , res , next) =>{
     const{ body,params : { id } } = req;
     try{
         const blogs= await comment(id,body);
