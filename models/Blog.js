@@ -21,7 +21,9 @@ const blogSchema=new Schema({
     updatedAt:{
         type:Date,
         default:Date.now(),
-    }
+    },
+    comments:[String]  
+  
 })
 
 const blogModel= mongoose.model('Blog',blogSchema)

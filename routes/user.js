@@ -2,7 +2,9 @@ const express =require('express');
 const {create,getAll,getbyId,editbyId,deletbyId,login,pushfollowID,unfollow}=require('../controllers/user')
 const router =express.Router();
 const authMiddleware = require('../middlewares/auth');
-router.post('/',async(req,res,next) =>{
+
+
+router.post('/register',async(req,res,next) =>{
     const { body } = req;
     try{
         const user = await create(body);
@@ -30,7 +32,7 @@ router.get('/:id',async(req,res,next)=>{
         next(e);
     }
 })
-router.patch('/:id',async(req,res,next) =>{
+router.patch('/:id',authMiddleware,async(req,res,next) =>{
     const { params: { id }, body } = req;
     try {
         const users = await editbyId(id,body);
@@ -40,7 +42,7 @@ router.patch('/:id',async(req,res,next) =>{
       }
 
 })
-router.delete('/:id',async(req,res,next) =>{
+router.delete('/:id',authMiddleware,async(req,res,next) =>{
     const {params :{id}}=req;
     try{
         const user= await deletbyId(id);

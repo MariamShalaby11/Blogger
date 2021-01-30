@@ -7,18 +7,30 @@ const userSchema = new Schema({
     username:{
         type:String,
         unique:true,
-        required:true,
-        minLength:8,
-        maxLength:140
+        required:true
+        // minLength:6,
+        // maxLength:140
     },
     password:{
         type:String,
         required:true
     },
+    firstname:{
+        type:String,
+        required:true},
+    lastname:{
+        type:String,
+        required:true},
+    email:{
+        type:String,
+        required:true},
+     age:{type:Number,
+        required:true},
+    image:String,   
      followers:[{ type: Schema.Types.ObjectId, ref: 'User'}]
      ,
     
-    followings:[{ type: Schema.Types.ObjectId, ref: 'User'}]   
+    followings:[{ type: Schema.Types.ObjectId, ref: 'User'}] 
   
     
 },

@@ -1,5 +1,5 @@
 const express =require('express');
-const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag}=require('../controllers/blog')
+const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment}=require('../controllers/blog')
 const router =express.Router();
 const multer = require('multer');
 const path = require('path');
@@ -92,7 +92,18 @@ router.get('/tags/:tag', async (req, res, next) => {
         next(e);
     }
 });
+//write comment
+router.post('/comment/:id',async(req , res , next) =>{
+    const{ body,params : { id } } = req;
+    try{
+        const blogs= await comment(id,body);
+        res.json(blogs)
 
+    }catch(e){
+        next(e);
+    }
+
+})
 //edit specific blog
 router.patch('/:editid',async(req , res , next ) => 
 {

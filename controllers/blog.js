@@ -17,8 +17,11 @@ const getbyId=(id) => Blog.findById(id).exec();
 const getByTitle=(title) =>Blog.find({title}).exec();
 //search by tag
 const getByTag=(tags) =>Blog.find({tags}).exec();
+//write comment
+const comment = (id,body) => Blog.updateOne({_id:id},{$set:body})
+
 
 module.exports = {
-    create,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag
+    create,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment
 }
 
