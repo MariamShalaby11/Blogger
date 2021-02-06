@@ -61,7 +61,8 @@ router.post('/login',async(req,res,next)=>{
         next(e);
     }
 })
-router.post('/follow/:fid',authMiddleware,async(req,res,next)=>{
+// authMiddleware
+router.post('/follow/:fid',async(req,res,next)=>{
     const {user: { id }, params: { fid } } = req;
     try { 
       const userfollowID = await pushfollowID(id,fid);
@@ -70,7 +71,7 @@ router.post('/follow/:fid',authMiddleware,async(req,res,next)=>{
       next(e);
     }
   })
-  router.post('/unfollow/:fid',authMiddleware,async(req,res,next)=>{
+  router.post('/unfollow/:fid',async(req,res,next)=>{
     const {user: { id }, params: { fid } } = req;
     try {    
       const userunfollowID = await unfollow(id,fid);
