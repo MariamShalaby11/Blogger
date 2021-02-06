@@ -2,7 +2,7 @@ const express = require('express');//intiate express
 const mongoose = require('mongoose');
 const {getAll} = require('./controllers/blog');
 const routes=require('./routes');
-//const cors = require('cors');
+const cors = require('cors');
 
 const {MONGODB_DBURL}=process.env
 mongoose.connect(MONGODB_DBURL, {
@@ -15,7 +15,7 @@ mongoose.connect(MONGODB_DBURL, {
 
 
 const app=express();//isntance from express
-// app.use(cors());
+app.use(cors());
 // router.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Methods: PUT,GET,POST,DELETE,PATCH");
 //      res.header("Access-Control-Allow-Origin: *");
