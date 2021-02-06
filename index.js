@@ -24,6 +24,7 @@ const app=express();//isntance from express
 //       next();
 //     });
 // mongoose.connect('mongodb://localhost:27017/blog',{useUnifiedTopology: true})//connect to db
+
 app.use(express.json());//middleware to read from body
 
 

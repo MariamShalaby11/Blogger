@@ -35,7 +35,21 @@ try{
 }
 
 })
+router.post('/add', async (req, res, next) =>{
 
+    const {body ,user :{id}}=req;
+
+    
+    try{
+        const blog= await create({...body,author : id });
+        res.json(blog)
+    
+    }catch(e){
+        next(e);
+    
+    }
+    
+    })
 //get all blogs
 router.get('/',async(req,res,next) =>{
     try{
