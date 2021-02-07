@@ -1,8 +1,9 @@
 const express = require('express');//intiate express
 const mongoose = require('mongoose');
 const {getAll} = require('./controllers/blog');
-const routes=require('./routes');
 const cors = require('cors');
+const routes=require('./routes');
+
 
 const {MONGODB_DBURL}=process.env
 mongoose.connect(MONGODB_DBURL, {
