@@ -120,10 +120,10 @@ router.post('/comment/:id',async(req , res , next) =>{
 
 })
 //like post
-router.post('/like/:id',async(req , res , next)=>{
-    const{params : { id } } = req;
+router.post('/like/:lid',async(req , res , next)=>{
+    const{ user :{id},params : { lid } } = req;
     try{
-        const blogs= await like(id);
+        const blogs= await like(id,lid);
         res.json(blogs)
 
     }catch(e){
