@@ -3,8 +3,8 @@ const Blog = require('../models/Blog');
 const create =(blog) =>{
     return Blog.create(blog);
 }
-const create2 =(blog) =>{
-    return Blog.create2(blog);
+const createimage =(blog) =>{
+    return Blog.create(blog);
 }
 //get all blogs
 const getAll=() => Blog.find({}).exec();
@@ -30,6 +30,6 @@ const comment = (id,body) =>Blog.updateOne({_id:id},{$set:body},{new:true}).exec
 const like = (id,lid) =>Blog.findByIdAndUpdate( lid, { $push: { likes:id} },{ new: true, useFindAndModify: false })
 
 module.exports = {
-    create,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like,create2
+    create,createimage,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like
 }
 

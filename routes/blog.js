@@ -1,5 +1,5 @@
 const express =require('express');
-const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,create2}=require('../controllers/blog')
+const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,createimage}=require('../controllers/blog')
 const router =express.Router();
 const multer = require('multer');
 const path = require('path');
@@ -26,7 +26,7 @@ const {body ,user :{id}}=req;
 const _file =req.file.filename;
 
 try{
-    const blog= await create2({...body,image:_file,author : id });
+    const blog= await createimage({...body,image:_file,author : id });
     res.json(blog)
 
 }catch(e){
