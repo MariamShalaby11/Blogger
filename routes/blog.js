@@ -26,7 +26,7 @@ const {body ,user :{id}}=req;
 const _file =req.file.filename;
 
 try{
-    const blog= await create({...body,image:_file,author : id });
+    const blog= await create2({...body,image:_file,author : id });
     res.json(blog)
 
 }catch(e){
