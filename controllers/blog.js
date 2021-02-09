@@ -4,7 +4,7 @@ const create =(blog) =>{
     return Blog.create(blog);
 }
 const create2 =(blog) =>{
-    return Blog.create(blog);
+    return Blog.create2(blog);
 }
 //get all blogs
 const getAll=() => Blog.find({}).exec();
