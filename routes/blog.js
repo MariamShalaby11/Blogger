@@ -1,5 +1,5 @@
 const express =require('express');
-const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like}=require('../controllers/blog')
+const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,create2}=require('../controllers/blog')
 const router =express.Router();
 const multer = require('multer');
 const path = require('path');
