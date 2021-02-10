@@ -1,5 +1,5 @@
 const express =require('express');
-const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,createimage}=require('../controllers/blog')
+const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,unlike,createimage}=require('../controllers/blog')
 const router =express.Router();
 const multer = require('multer');
 const path = require('path');
@@ -124,6 +124,16 @@ router.post('/like/:lid',async(req , res , next)=>{
     const{ user :{id},params : { lid } } = req;
     try{
         const blogs= await like(id,lid);
+        res.json(blogs)
+
+    }catch(e){
+        next(e);
+    }
+})
+router.post('/unlike/:lid',async(req , res , next)=>{
+    const{ user :{id},params : { lid } } = req;
+    try{
+        const blogs= await unlike(id,lid);
         res.json(blogs)
 
     }catch(e){

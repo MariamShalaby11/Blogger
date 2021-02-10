@@ -28,8 +28,11 @@ const comment = (id,body) =>Blog.updateOne({_id:id},{$set:body},{new:true}).exec
 
 //like blog
 const like = (id,lid) =>Blog.findByIdAndUpdate( lid, { $push: { likes:id} },{ new: true, useFindAndModify: false })
+//unlike blog
+const unlike= (id,lid) =>Blog.findByIdAndUpdate( lid, { $pull: { likes:id} },{ new: true, useFindAndModify: false })
+
 
 module.exports = {
-    create,createimage,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like
+    create,createimage,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like,unlike
 }
 
