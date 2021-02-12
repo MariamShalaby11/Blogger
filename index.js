@@ -31,7 +31,7 @@ const app=express();//isntance from express
 // }​​);
 app.use(cors());
 app.use(express.json());//middleware to read from body
-app.use(express.urlencoded({​​​​ extended: true }​​​​))
+//app.use(express.urlencoded({​​​​ extended: true }​​​​))
  
 
 // router.use(function(req, res, next) {
