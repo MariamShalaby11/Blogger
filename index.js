@@ -1,6 +1,10 @@
+// const dotenv = require("dotenv");
+// dotenv.config();
+require('dotenv').config();
 const express = require('express');//intiate express
 const mongoose = require('mongoose');
 const {getAll} = require('./controllers/blog');
+
 const cors = require('cors');
 const routes=require('./routes');
 
@@ -16,19 +20,7 @@ mongoose.connect(MONGODB_DBURL, {
 
 
 const app=express();//isntance from express
-// app.use(function (req, res, next) {​​
 
-//     //Enabling CORS
-
-//     res.header("Access-Control-Allow-Origin", "*");
-
-//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-
-//     next();
-
-// }​​);
 app.use(cors());
 app.use(express.json());//middleware to read from body
 //app.use(express.urlencoded({​​​​ extended: true }​​​​))

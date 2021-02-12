@@ -1,32 +1,34 @@
 const express =require('express');
-const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,unlike,createimage}=require('../controllers/blog')
+const {create,getAll,getbyId,editbyId,deletbyId, getMine,getByTitle,getByTag,comment,like,unlike,uploadImg}=require('../controllers/blog')
 const router =express.Router();
-const multer = require('multer');
-const path = require('path');
+// const multer = require('multer');
+// const path = require('path');
 
+const cloudinary=require('../Utils/cloudinary');
+const upload=require('../Utils/multer');
 
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'uploads/');
+//     },
 
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads/');
-    },
-
-    // multer removes file extensions so let's add them back
-    filename: function(req, file, cb) {
-        cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage: storage });
+//     // multer removes file extensions so let's add them back
+//     filename: function(req, file, cb) {
+//         cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
+//const upload = multer({ storage: storage });
 
 //create blog
 router.post('/addimg',upload.single('image'), async (req, res, next) =>{
 
 const {body ,user :{id}}=req;
-const _file =req.file.filename;
+//const _file =req.file.filename;
 
 try{
-    const blog= await createimage({...body,image:_file,author : id });
+    const result=await cloudinary.uploader.upload(req.file.path);
+    const blog= await uploadImg({...body,image:result.secure_url,cloudinary_id:result.public_id,author : id });
+   // const blog= await createimage({...body,image:_file,author : id });
     res.json(blog)
 
 }catch(e){

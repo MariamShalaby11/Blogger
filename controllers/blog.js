@@ -6,6 +6,10 @@ const create =(blog) =>{
 const createimage =(blog) =>{
     return Blog.create(blog);
 }
+const uploadImg =(blog) =>{
+    return Blog.create(blog);
+}
+
 //get all blogs
 const getAll=() => Blog.find({}).exec();
 //edit by id (my blogs only)
@@ -33,6 +37,6 @@ const unlike= (id,lid) =>Blog.findByIdAndUpdate( lid, { $pull: { likes:id} },{ n
 
 
 module.exports = {
-    create,createimage,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like,unlike
+    create,createimage,getAll,getbyId,editbyId,deletbyId,getMine,getByTitle,getByTag,comment,like,unlike,uploadImg
 }
 
