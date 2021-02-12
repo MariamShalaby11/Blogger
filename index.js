@@ -16,6 +16,10 @@ mongoose.connect(MONGODB_DBURL, {
 
 
 const app=express();//isntance from express
+
+app.use(express.json());//middleware to read from body
+
+app.use(express.urlencoded({​​​​ extended: true }​​​​))
 app.use(cors());
 // router.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Methods: PUT,GET,POST,DELETE,PATCH");
@@ -25,7 +29,6 @@ app.use(cors());
 //   });
 // mongoose.connect('mongodb://localhost:27017/blog',{useUnifiedTopology: true})//connect to db
 
-app.use(express.json());//middleware to read from body
 
 
 app.use(express.static(__dirname + '/public'));
