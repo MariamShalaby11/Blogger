@@ -22,7 +22,14 @@ const blogSchema=new Schema({
         type:Date,
         default:Date.now(),
     },
-    comments:String,
+     comments:[String],
+        // comments:[{​​
+
+        //     userId:{​​type: Schema.Types.ObjectId, ref: 'User'}​​,
+            
+        //     body:{​​type:string}​​
+            
+        //     }​​],
     likes:[{type: Schema.Types.ObjectId, ref: 'User'}]
   
 })
