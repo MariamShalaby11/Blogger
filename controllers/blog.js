@@ -22,9 +22,9 @@ const getMine=(id) => Blog.find(id).sort({createdAt:'desc'}).exec();
 //search blog by id
 const getbyId=(id) => Blog.findById(id).exec();
 //search by title
-const getByTitle=(title) =>Blog.find({title}).exec();
+const getByTitle=(title) =>Blog.find({title}).populate('author').exec();
 //search by tag
-const getByTag=(tags) =>Blog.find({tags}).exec();
+const getByTag=(tags) =>Blog.find({tags}).populate('author').exec();
 //write comment
 const comment = (id,body) =>Blog.updateOne({_id:id},{$addToSet:body},{new:true}).exec()
 //Blog.findByIdAndUpdate( id ,{ $set: {comments:body} },{ new: true, useFindAndModify: false })
