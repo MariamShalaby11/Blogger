@@ -119,8 +119,8 @@ router.patch('/comment/:id',async(req , res , next) =>{
     }catch(e){
         next(e);
     }
-
 })
+
 //like post
 router.post('/like/:lid',async(req , res , next)=>{
     const{ user :{id},params : { lid } } = req;

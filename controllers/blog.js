@@ -11,7 +11,8 @@ const uploadImg =(blog) =>{
 }
 
 //get all blogs
-const getAll=() => Blog.find({}).exec();
+//const getAll=() => Blog.find({}).exec();
+const getAll=() => Blog.find().sort({createdAt:'desc'}).populate('author').exec();
 //edit by id (my blogs only)
 const editbyId=(id,editid,body) =>Blog.updateOne({$and:[{_id:editid},{author:id}]},{$set:body});
 //delete by id (my blogs only)
