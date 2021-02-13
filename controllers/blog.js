@@ -18,7 +18,7 @@ const editbyId=(id,editid,body) =>Blog.updateOne({$and:[{_id:editid},{author:id}
 //delete by id (my blogs only)
 const deletbyId=(id,delid) =>{ return Blog.find({$and:[{_id:delid},{author:id}]}).remove()};
 //get my blogs only
-const getMine=(id) => Blog.find(id).exec();
+const getMine=(id) => Blog.find(id).sort({createdAt:'desc'}).exec();
 //search blog by id
 const getbyId=(id) => Blog.findById(id).exec();
 //search by title
