@@ -32,9 +32,9 @@ const comment = (id,body) =>Blog.updateOne({_id:id},{$addToSet:body},{new:true})
 //  Blog.updateOne({_id:id},{$set:body},{new:true}).exec()
 
 //like blog
-const like = (id,lid) =>Blog.findByIdAndUpdate( lid, { $push: { likes:id} },{ new: true, useFindAndModify: false })
+const like = (id,lid) =>Blog.findByIdAndUpdate( lid, { $push: { likes:id} },{ new: true, useFindAndModify: false }).populate('author');
 //unlike blog
-const unlike= (id,lid) =>Blog.findByIdAndUpdate( lid, { $pull: { likes:id} },{ new: true, useFindAndModify: false })
+const unlike= (id,lid) =>Blog.findByIdAndUpdate( lid, { $pull: { likes:id} },{ new: true, useFindAndModify: false }).populate('author');
 
 
 module.exports = {
